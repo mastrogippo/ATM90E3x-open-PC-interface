@@ -1,0 +1,11 @@
+.pioenvs
+.piolibdeps
+.vscode
+.vs
+obj
+*.exe
+*.bat
+*.bak
+*.exe.config
+*.pdb
+*.exe.manifest

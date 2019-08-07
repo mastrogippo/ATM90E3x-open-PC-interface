@@ -1,0 +1,411 @@
+#S108 registers address list
+# ()=Read only bits. []=Write '1' to active bits. {}=reserve bits but R/W enable.
+
+#System level -- special registers (0x000-0x00F)
+SoftReset = 0x0000   #W. always '0's. 0x789A active.
+
+SysStatus0 = 0x0001   #R/C. x0x0x0x0_00xx00xx
+
+SysStatus1 = 0x0002   #R/C. 00xx000x_00000000
+
+FuncEn0 = 0x0003     #R/W. xxxxx0xx_00xx00xx
+
+FuncEn1 = 0x0004    #R/W. 00xx000x_00000000
+
+ZXConfig = 0x0007   #R/W. 0x0001h
+
+SagTh = 0x0008      #R/W. 0x0000h
+
+PhaseLossTh = 0x0009    #R/W. 0x0000h
+
+INWarnTh0 = 0x000a      #R/W. 0xFFFFh
+
+INWarnTh1 = 0x000b      #R/W. 0xFFFFh
+
+THDNUTh = 0x000c    #R/W. 0xFFFFh
+
+THDNITh = 0x000d    #R/W. 0xFFFFh
+
+DMACtrl = 0x000e    #R/W. 0x7E44h
+
+LastSPIData = 0x000f    #R.
+
+
+#System level -- low power mode registers (0x010-0x01D)
+DetectCtrl = 0x0010  #R/W. xxxxxxxx_xx000000
+
+DetectThA = 0x0011  #R/W. 0x00h
+
+DetectThB = 0x0012  #R/W. 0x00h
+
+DetectThC = 0x0013  #R/W. 0x00h
+
+PMOffsetA = 0x0014  #R/W. xx000000_00000000
+
+PMOffsetB = 0x0015  #R/W. xx000000_00000000
+
+PMOffsetC = 0x0016  #R/W. xx000000_00000000
+
+PMPGA = 0x0017   #R/W. 0x00h
+
+PMIrmsA = 0x0018    #R. 0x00h
+
+PMIrmsB = 0x0019    #R. 0x00h
+
+PMIrmsC = 0x001a    #R. 0x00h
+
+PMConfig = 0x001b   #R/W. 0[0]00xxxx_xxxxxxx(0)
+
+PMAvgSamples = 0x001c   #R/W. 0xA0h
+
+PMIrmsLSB = 0x001d      #R. xxxx0000_00000000???
+
+#Configuration -- configuration registers (0x030-0x03B)
+ConfigStart = 0x0030    #R/W. 0x6886h
+
+PLconstH = 0x0031       #R/W. 0x0861h
+
+PLconstL = 0x0032       #R/W. 0xc468h
+
+MMode0 = 0x0033     #R/W. xx000000_10000111
+
+MMode1 = 0x0034     #R/W. 0x0000h
+
+PStartTh = 0x0035   #R/W. 0x0000h
+
+QStartTh = 0x0036   #R/W. 0x0000h
+
+SStartTh = 0x0037   #R/W. 0x0000h
+
+PPhaseTh = 0x0038     #R/W. 0x0000h
+
+QPhaseTh = 0x0039     #R/W. 0x0000h
+
+SPhaseTh = 0x003a     #R/W. 0x0000h
+
+CS0 = 0x003b        #R/W. Should be 0x421Ch
+
+
+#Calibration -- energy calibration register (0x40-0x4D)
+CalStart = 0x0040   #R/W. 0x6886h
+
+POffsetA = 0x0041   #R/W. 0x0000h
+
+QOffsetA = 0x0042   #R/W. 0x0000h
+
+POffsetB = 0x0043   #R/W. 0x0000h
+
+QOffsetB = 0x0044   #R/W. 0x0000h
+
+POffsetC = 0x0045   #R/W. 0x0000h
+
+QOffsetC = 0x0046   #R/W. 0x0000h
+
+PQGainA = 0x0047  #R/W. 0x0000h
+
+PhiA = 0x0048   #R/W. 0x0000h
+
+PQGainB = 0x0049  #R/W. 0x0000h
+
+PhiB = 0x004a   #R/W. 0x0000h
+
+PQGainC = 0x004b  #R/W. 0x0000h
+
+PhiC = 0x004c   #R/W. 0x0000h
+
+CS1 = 0x004d    #R/W. Should be 0x0h
+
+
+#Calibration -- fundamental/harmonic energy calibration register (0x50-0x57)
+    #0x5xH cs error only causes 0x5x metering stopped. Other cs errors cause all metering stop.
+HarmStart = 0x0050  #R/W. 0x6886h
+
+POffsetAF = 0x0051  #R/W. 0x0000h
+
+POffsetBF = 0x0052  #R/W. 0x0000h
+
+POffsetCF = 0x0053  #R/W. 0x0000h
+
+PGainAF = 0x0054    #R/W. 0x0000h
+
+PGainBF = 0x0055    #R/W. 0x0000h
+
+PGainCF = 0x0056    #R/W. 0x0000h
+
+CS2 = 0x0057    #R/W. Should be 0x0h
+
+
+#Calibration -- measurement calibration register (0x60-0x6F)
+AdjStart = 0x0060   #R/W. 0x6886h
+
+UgainA = 0x0061     #R/W. 0xCE40h
+
+IgainA = 0x0062     #R/W. 0x7530h
+
+UoffsetA = 0x0063   #R/W. 0x0000h
+
+IoffsetA = 0x0064   #R/W. 0x0000h
+
+UgainB = 0x0065     #R/W. 0xCE40h
+
+IgainB = 0x0066     #R/W. 0x7530h
+
+UoffsetB = 0x0067   #R/W. 0x0000h
+
+IoffsetB = 0x0068   #R/W. 0x0000h
+
+UgainC = 0x0069     #R/W. 0xCE40h
+
+IgainC = 0x006a     #R/W. 0x7530h
+
+UoffsetC = 0x006b   #R/W. 0x0000h
+
+IoffsetC = 0x006c   #R/W. 0x0000h
+
+IgainN = 0x006d     #R/W. 0x7530h
+
+IoffsetN = 0x006e   #R/W. 0x0000h
+
+CS3 = 0x006f    #R/W. Should be 0x8EBEh
+
+
+#Energy metering -- regular energy register (0x80-0x99)
+APenergyT = 0x0080  #R/C
+
+APenergyA = 0x0081  #R/C
+
+APenergyB = 0x0082  #R/C
+
+APenergyC = 0x0083  #R/C
+
+ANenergyT = 0x0084  #R/C
+
+ANenergyA = 0x0085  #R/C
+
+ANenergyB = 0x0086  #R/C
+
+ANenergyC = 0x0087  #R/C
+
+RPenergyT = 0x0088  #R/C
+
+RPenergyA = 0x0089  #R/C
+
+RPenergyB = 0x008a  #R/C
+
+RPenergyC = 0x008b  #R/C
+
+RNenergyT = 0x008c  #R/C
+
+RNenergyA = 0x008d  #R/C
+
+RNenergyB = 0x008e  #R/C
+
+RNenergyC = 0x008f  #R/C
+
+SAenergyT = 0x0090  #R/C
+
+SenergyA = 0x0091  #R/C
+
+SenergyB = 0x0092  #R/C
+
+SenergyC = 0x0093  #R/C
+
+SVenergyT = 0x0094  #R/C
+
+EnStatus0 = 0x0095  #R. 1111xxxx_xxxx0000
+
+EnStatus1 = 0x0096  #R. xxxxxxxx_x000x000
+
+#EnStatus2 = 0x0097  #R. 11xxxxxx_00000000
+
+SVmeanT = 0x0098  #R
+
+SVmeanTLSB = 0x0099 #R
+
+
+#Energy metering -- fundamental/harmonious energy register (0xA0-0xAF)
+APenergyTF = 0x00a0     #R/C
+
+APenergyAF = 0x00a1     #R/C
+
+APenergyBF = 0x00a2     #R/C
+
+APenergyCF = 0x00a3     #R/C
+
+ANenergyTF = 0x00a4     #R/C
+
+ANenergyAF = 0x00a5     #R/C
+
+ANenergyBF = 0x00a6     #R/C
+
+ANenergyCF = 0x00a7     #R/C
+
+APenergyTH = 0x00a8     #R/C
+
+APenergyAH = 0x00a9     #R/C
+
+APenergyBH = 0x00aa     #R/C
+
+APenergyCH = 0x00ab     #R/C
+
+ANenergyTH = 0x00ac     #R/C
+
+ANenergyAH = 0x00ad     #R/C
+
+ANenergyBH = 0x00ae     #R/C
+
+ANenergyCH = 0x00af     #R/C
+
+
+#Parameter measuring -- power register (0xB0-0xCB)
+PmeanT = 0x00b0     #R.
+
+PmeanA = 0x00b1     #R.
+
+PmeanB = 0x00b2     #R.
+
+PmeanC = 0x00b3     #R.
+
+QmeanT = 0x00b4     #R.
+
+QmeanA = 0x00b5     #R.
+
+QmeanB = 0x00b6     #R.
+
+QmeanC = 0x00b7     #R.
+
+SAmeanT = 0x00b8     #R.
+
+SmeanA = 0x00b9     #R.
+
+SmeanB = 0x00ba     #R.
+
+SmeanC = 0x00bb     #R.
+
+PFmeanT = 0x00bc     #R.
+
+PFmeanA = 0x00bd     #R.
+
+PFmeanB = 0x00be     #R.
+
+PFmeanC = 0x00bf     #R.
+
+PmeanTLSB = 0x00c0     #R.
+
+PmeanALSB = 0x00c1     #R.
+
+PmeanBLSB = 0x00c2     #R.
+
+PmeanCLSB = 0x00c3     #R.
+
+QmeanTLSB = 0x00c4     #R.
+
+QmeanALSB = 0x00c5     #R.
+
+QmeanBLSB = 0x00c6     #R.
+
+QmeanCLSB = 0x00c7     #R.
+
+SAmeanTLSB = 0x00c8     #R.
+
+SmeanALSB = 0x00c9     #R.
+
+SmeanBLSB = 0x00ca     #R.
+
+SmeanCLSB = 0x00cb     #R.
+
+
+#Parameter measuring -- fundamental/harmonic power and voltage/current RMS register (0xD0-0xEF)
+PmeanTF = 0x00d0    #R.
+
+PmeanAF = 0x00d1    #R.
+
+PmeanBF = 0x00d2    #R.
+
+PmeanCF = 0x00d3    #R.
+
+PmeanTH = 0x00d4    #R.
+
+PmeanAH = 0x00d5    #R.
+
+PmeanBH = 0x00d6    #R.
+
+PmeanCH = 0x00d7    #R.
+
+IrmsN1 = 0x00d8     #R.
+
+UrmsA = 0x00d9     #R.
+
+UrmsB = 0x00da     #R.
+
+UrmsC = 0x00db     #R.
+
+IrmsN0 = 0x00dc     #R.
+
+IrmsA = 0x00dd     #R.
+
+IrmsB = 0x00de     #R.
+
+IrmsC = 0x00df     #R.
+
+PmeanTFLSB = 0x00e0     #R.
+
+PmeanAFLSB = 0x00e1     #R.
+
+PmeanBFLSB = 0x00e2     #R.
+
+PmeanCFLSB = 0x00e3     #R.
+
+PmeanTHLSB = 0x00e4     #R.
+
+PmeanAHLSB = 0x00e5     #R.
+
+PmeanBHLSB = 0x00e6     #R.
+
+PmeanCHLSB = 0x00e7     #R.
+
+#IrmsN1LSB = 0x00e8     #R.
+
+UrmsALSB = 0x00e9     #R.
+
+UrmsBLSB = 0x00ea     #R.
+
+UrmsCLSB = 0x00eb     #R.
+
+#IrmsN0LSB = 0x00ec     #R.
+
+IrmsALSB = 0x00ed     #R.
+
+IrmsBLSB = 0x00ee     #R.
+
+IrmsCLSB = 0x00ef     #R.
+
+
+#Parameter measuring -- THD+N,Frequency, angle and temperature register (0xF0-0xFF)
+THDNUA = 0x00f1     #R.
+
+THDNUB = 0x00f2     #R.
+
+THDNUC = 0x00f3     #R.
+
+THDNIA = 0x00f5     #R.
+
+THDNIB = 0x00f6     #R.
+
+THDNIC = 0x00f7     #R.
+
+Freq = 0x00f8   #R. 0xC35h
+
+PAngleA = 0x00f9    #R.
+
+PAngleB = 0x00fa    #R.
+
+PAngleC = 0x00fb    #R.
+
+Temp = 0x00fc   #R. 0xFF00h
+
+UangleA = 0x00fd    #R.
+
+UangleB = 0x00fe    #R.
+
+UangleC = 0x00ff    #R.
